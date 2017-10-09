@@ -1,4 +1,4 @@
-index.html
+*.html
 *.idea
 out
 *.mdj
@@ -6,3 +6,8 @@ out
 *.mdj
 *.iml
 .idea
+.classpath
+.settings
+bin
+.project
+*.orig
