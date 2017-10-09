@@ -1,0 +1,21 @@
+<<<<<<< HEAD
+index.html
+=======
+modif de FT(*.html)
+>>>>>>> 3ccf9cf546a6adcced847c494a135b18064430c6
+*.idea
+out
+*.mdj
+*.pdf
+*.mdj
+*.iml
+<<<<<<< HEAD
+.idea
+=======
+.idea
+.classpath
+.settings
+bin
+.project
+modif de FT
+>>>>>>> 3ccf9cf546a6adcced847c494a135b18064430c6
