@@ -14,5 +14,6 @@ public class MarkServicesImpl implements MarkServices {
     public void addMark(Mark mark) {
        EvaluableIdea ideaToMark = db.getIdeas().stream().map(idea -> (EvaluableIdea)idea).filter(idea -> idea == mark.getIdea()).findFirst().get();
        ideaToMark.addMark(mark);
+       mark.getUser().getMarks().add(mark);
     }
 }
