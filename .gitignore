@@ -6,3 +6,7 @@ out
 *.mdj
 *.iml
 .idea
+.classpath
+.settings
+bin
+.project
