@@ -2,3 +2,6 @@
 out
 *.mdj
 *.pdf
+*.mdj
+*.iml
+.idea
