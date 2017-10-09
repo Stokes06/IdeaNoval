@@ -6,3 +6,6 @@ out
 *.iml
 .idea
 .classpath
+.settings
+bin
+.project
