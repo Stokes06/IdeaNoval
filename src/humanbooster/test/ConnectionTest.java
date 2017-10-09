@@ -47,5 +47,6 @@ public class ConnectionTest {
         markServices.addMark(new Mark(idea, session, value));
         ideaServices.printAllEvaluableIdeas();
 
+
     }
 }
