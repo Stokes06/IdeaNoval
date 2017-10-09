@@ -18,6 +18,13 @@ public class Poll extends Idea {
         answers = new ArrayList<>();
     }
 
+    public void addOption(String optionName)
+    {
+        if(options.stream().filter(p->p.getName().equals(optionName)).count() == 0)
+        {
+            options.add(new PollOption(optionName));
+        }
+    }
     public List<PollOption> getOptions() {
         return options;
     }

@@ -5,6 +5,7 @@ import humanbooster.pojo.*;
 import humanbooster.services.IdeaServices;
 import humanbooster.services.MarkServices;
 import humanbooster.services.UserServices;
+import humanbooster.services.impl.AnswerServicesImpl;
 import humanbooster.services.impl.IdeaServicesImpl;
 import humanbooster.services.impl.MarkServicesImpl;
 import humanbooster.services.impl.UserServicesImpl;
@@ -20,6 +21,7 @@ public class ConnectionTest {
         UserServices userServices = new UserServicesImpl(db);
         IdeaServices ideaServices = new IdeaServicesImpl(db);
         MarkServices markServices = new MarkServicesImpl(db);
+        AnswerServicesImpl answerServices = new AnswerServicesImpl(db);
         Scanner sc = new Scanner(System.in);
         String login, password;
         User session;
@@ -39,7 +41,7 @@ public class ConnectionTest {
         List<Idea> ideas = ideaServices.getAllEvaluableIdeas();
         Iterator<Integer> it = IntStream.range(0,ideas.size()).iterator();
         ideas.stream().map(idea -> idea.getTitle()).forEach(i->{System.out.println(it.next()+1+") "+i);});
-        EvaluableIdea idea = (EvaluableIdea) db.getIdeas().get(sc.nextInt()-1);
+        EvaluableIdea idea = (EvaluableIdea) db.getEvaluableIdeas().get(sc.nextInt()-1);
 
         System.out.println(idea.getContent());
         System.out.println("tapez 1 si vous aimez , 0 si vous n'aimez pas");
@@ -47,6 +49,13 @@ public class ConnectionTest {
         markServices.addMark(new Mark(idea, session, value));
         ideaServices.printAllEvaluableIdeas();
 
+        Poll pollTemp = new Poll("titre","contenu",(Client)session);
+        answerServices.addAnswer(pollTemp,session,"oui");
+        answerServices.addAnswer(pollTemp,session,"non");
+        answerServices.addAnswer(pollTemp,session,"peut-etre");
+        answerServices.addAnswer(pollTemp,session,"peut-etre");
+        answerServices.addAnswer(pollTemp,session,"oui");
+        System.out.println(pollTemp.getOptions());
 
     }
 }

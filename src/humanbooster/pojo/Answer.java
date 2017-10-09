@@ -4,12 +4,13 @@ public class Answer {
 
     private Poll poll;
     private User user;
-    private String answer;
+    private PollOption answer;
 
-    public Answer(Poll poll, User user, String answer) {
+    public Answer(Poll poll, User user, PollOption _answer) {
         this.poll = poll;
         this.user = user;
-        this.answer = answer;
+        this.answer = _answer;
+
     }
 
     public Poll getPoll() {
@@ -28,11 +29,11 @@ public class Answer {
         this.user = user;
     }
 
-    public String getAnswer() {
+    public PollOption getAnswer() {
         return answer;
     }
 
-    public void setAnswer(String answer) {
+    public void setAnswer(PollOption answer) {
         this.answer = answer;
     }
 }
