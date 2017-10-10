@@ -7,7 +7,7 @@ import java.util.List;
 
 public class EvaluableIdea extends Idea {
     private Date endEvaluation;
-    private List<Mark> marks;
+
 
     public EvaluableIdea(String title, String content, Client author) {
         super(title, content, author);
@@ -15,7 +15,7 @@ public class EvaluableIdea extends Idea {
         c.setTime(this.getPublishDate());
         c.add(Calendar.DAY_OF_WEEK,7);
         this.endEvaluation = c.getTime();
-        marks = new ArrayList<>();
+
     }
 
     public Date getEndEvaluation() {
@@ -26,27 +26,11 @@ public class EvaluableIdea extends Idea {
         this.endEvaluation = endEvaluation;
     }
 
-    public List<Mark> getMarks() {
-        return marks;
-    }
 
-    public void addMark(Mark mark){
-        this.marks.add(mark);
-    }
-    public void setMarks(List<Mark> marks) {
-        this.marks = marks;
-    }
 
     @Override
     public String toString() {
-        return super.toString()+"\n"+getUpAndFlop();
+        return "evaluable idea : "+super.toString();
     }
-    private String getUpAndFlop()
-    {
-        StringBuilder ret = new StringBuilder();
-        long numberOfTop = this.getMarks().stream().filter(e->e.getGrade().equals(Grade.TOP)).count();
-        long numberOfFlop = this.getMarks().stream().filter(e->e.getGrade().equals(Grade.FLOP)).count();
-        ret.append("top :"+numberOfTop+", flop : "+numberOfFlop);
-        return ret.toString();
-    }
+
 }

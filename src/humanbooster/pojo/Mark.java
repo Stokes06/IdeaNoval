@@ -3,16 +3,16 @@ package humanbooster.pojo;
 public class Mark {
 
     private int idMark;
-    private EvaluableIdea idea;
-    private User user;
+    private int idIdea;
+    private int idUser;
     /**
      * top = 1 , flop = -1
      */
     private Grade grade;
 
-    public Mark(EvaluableIdea idea, User user, Grade grade) {
-        this.idea = idea;
-        this.user = user;
+    public Mark(int idIdea, int idUser, Grade grade) {
+        this.idIdea = idIdea;
+        this.idUser = idUser;
         this.grade = grade;
     }
 
@@ -24,20 +24,20 @@ public class Mark {
         this.idMark = idMark;
     }
 
-    public EvaluableIdea getIdea() {
-        return idea;
+    public int getIdea() {
+        return idIdea;
     }
 
-    public void setIdea(EvaluableIdea idea) {
-        this.idea = idea;
+    public void setIdea(int idea) {
+        this.idIdea = idea;
     }
 
-    public User getUser() {
-        return user;
+    public int getUser() {
+        return idUser;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(int user) {
+        this.idUser = user;
     }
 
     public Grade getGrade() {
@@ -51,8 +51,8 @@ public class Mark {
     @Override
     public String toString() {
         return "Mark{" +
-                "idea=" + idea +
-                ", user=" + user +
+                "id Idea=" + idIdea +
+                ", idUser=" + idUser +
                 ", grade=" + grade +
                 '}';
     }

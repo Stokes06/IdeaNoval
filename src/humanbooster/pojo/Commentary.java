@@ -7,15 +7,15 @@ import java.util.Date;
 public class Commentary {
 
     private int idCommentary;
-    private Idea idea;
-    private User author;
+    private int idIdea;
+    private int idAuthor;
     private Date commentaryDate;
     private String content;
     private boolean isDeleted;
 
-    public Commentary(Idea idea, User author, String content) {
-        this.idea = idea;
-        this.author = author;
+    public Commentary(int idIdea, int idAuthor, String content) {
+        this.idIdea = idIdea;
+        this.idAuthor = idAuthor;
         this.content = content;
         commentaryDate = new Date();
         isDeleted = false;
@@ -48,21 +48,20 @@ public class Commentary {
         isDeleted = deleted;
     }
 
-    public Idea getIdea() {
-
-        return idea;
+    public int getIdIdea() {
+        return idIdea;
     }
 
-    public void setIdea(Idea idea) {
-        this.idea = idea;
+    public void setIdIdea(int idIdea) {
+        this.idIdea = idIdea;
     }
 
-    public User getAuthor() {
-        return author;
+    public int getIdAuthor() {
+        return idAuthor;
     }
 
-    public void setAuthor(User author) {
-        this.author = author;
+    public void setIdAuthor(int idAuthor) {
+        this.idAuthor = idAuthor;
     }
 
     public Date getCommentaryDate() {
@@ -76,8 +75,8 @@ public class Commentary {
     @Override
     public String toString() {
         return "Commentary{" +
-                "idea=" + idea +
-                ", author=" + author +
+                "idea=" + idIdea +
+                ", id author=" + idAuthor +
                 ", commentaryDate=" + DateManager.formatDate(commentaryDate )+
                 ", content='" + content + '\'' +
                 ", isDeleted=" + isDeleted +

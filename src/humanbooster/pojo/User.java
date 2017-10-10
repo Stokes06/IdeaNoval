@@ -16,8 +16,8 @@ public class User {
     private String pseudo;
     private String password;
     private Date registerDate;
-    private List<Commentary> commentaries;
-    private List<Mark> marks;
+
+
     private List<Answer> answers;
 
     public User(){}
@@ -27,8 +27,8 @@ public class User {
         this.login = _login;
         this.password = _password;
         this.registerDate = new Date();
-        commentaries = new ArrayList<>();
-        marks = new ArrayList<>();
+
+
         answers = new ArrayList<>();
     }
 
@@ -72,21 +72,6 @@ public class User {
         this.registerDate = registerDate;
     }
 
-    public List<Commentary> getCommentaries() {
-        return commentaries;
-    }
-
-    public void setCommentaries(List<Commentary> commentaries) {
-        this.commentaries = commentaries;
-    }
-
-    public List<Mark> getMarks() {
-        return marks;
-    }
-
-    public void setMarks(List<Mark> marks) {
-        this.marks = marks;
-    }
 
     public List<Answer> getAnswers() {
         return answers;
