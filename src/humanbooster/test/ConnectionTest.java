@@ -17,7 +17,7 @@ import java.util.stream.IntStream;
 
 public class ConnectionTest {
     public static void main(String[] args) {
-     /*
+
         Database db = new Database();
         UserServices userServices = new UserServicesImpl(db);
         IdeaServices ideaServices = new IdeaServicesImpl(db);
@@ -38,25 +38,35 @@ public class ConnectionTest {
 
 
         System.out.println("Bienvenue "+session.getPseudo());
-        System.out.println("Choisissez l'idée que pour laquelle vous voulez donner une note");
-        List<Idea> ideas = ideaServices.getAllEvaluableIdeas();
-        Iterator<Integer> it = IntStream.range(0,ideas.size()).iterator();
-        ideas.stream().map(idea -> idea.getTitle()).forEach(i->{System.out.println(it.next()+1+") "+i);});
-        EvaluableIdea idea = (EvaluableIdea) db.getEvaluableIdeas().get(sc.nextInt()-1);
+        System.out.println("Choisissez l'idée  pour laquelle vous voulez donner une note");
 
-        System.out.println(idea.getContent());
-        System.out.println("tapez 1 si vous aimez , 0 si vous n'aimez pas");
-        Grade value = sc.nextInt()>0 ? Grade.TOP : Grade.FLOP;
-        markServices.addMark(idea, session, value);
+        ideaServices.printAllPolls();
+
+        int choix = sc.nextInt();
+        Poll ideaChoix = db.getPollById(choix);
+        System.out.println(ideaChoix.getContent());
+        System.out.println(ideaChoix.getTopic());
+        System.out.println(ideaChoix.getPublicOptions());
+        System.out.println("Quelle est votre reponse ?");
+        String choixPoll = sc.next();
+        answerServices.addAnswer(ideaChoix.getId(), session.getIdUser(),choixPoll);
+        answerServices.printAnswersByUser(session.getIdUser());
+        System.out.println("réponses possible après :");
+        System.out.println(ideaChoix.getPublicOptions());
+
+        System.out.println("Choisissez une idée evaluable : ");
         ideaServices.printAllEvaluableIdeas();
+        choix = sc.nextInt();
+        EvaluableIdea ideaVote = db.getEvaluateIdeaById(choix);
+        System.out.println(ideaVote.getContent());
+        System.out.println("Aimez vous cette idée ? (y/n)");
+        Grade g = (sc.next().matches("y|oui]"))? Grade.TOP : Grade.FLOP;
 
-        Poll pollTemp = new Poll("titre","contenu",(Client)session);
-        answerServices.addAnswer(pollTemp,session,"oui");
-        answerServices.addAnswer(pollTemp,session,"non");
-        answerServices.addAnswer(pollTemp,session,"peut-etre");
-        answerServices.addAnswer(pollTemp,session,"peut-etre");
-        answerServices.addAnswer(pollTemp,session,"oui");
-        System.out.println(pollTemp.getOptions());
-*/
+        markServices.addMark(ideaVote.getId(), session.getIdUser(), g);
+        markServices.addMark(ideaVote.getId(), db.getUserList().get(0).getIdUser(), Grade.TOP);
+        markServices.addMark(ideaVote.getId(), db.getUserList().get(2).getIdUser(), Grade.FLOP);
+
+        System.out.println(ideaVote.getTitle()+" Evaluation :");
+        System.out.println(markServices.getMarksForIdea(ideaVote.getId()));
     }
 }

@@ -8,4 +8,5 @@ public interface IdeaServices {
     public List<Idea> getAllEvaluableIdeas();
     public void printAllEvaluableIdeas();
 
+    public void printAllPolls();
 }

@@ -16,12 +16,24 @@ public class IdeaServicesImpl implements IdeaServices {
         return this.db.getEvaluableIdeas().stream().filter(e->e.getClass().equals(EvaluableIdea.class)).collect(Collectors.toList());
     }
 
+    /**
+     * affiche l'identifiant et le titre des idées
+     */
     @Override
     public void printAllEvaluableIdeas() {
-        this.db.getEvaluableIdeas().stream().filter(idea->idea.getClass().equals(EvaluableIdea.class)).forEach(System.out::println);
+        this.db.getEvaluableIdeas().stream()
+                .forEach(e->{
+                    System.out.println("["+e.getId()+"] "+e.getTitle());
+                });
     }
 
-
+    @Override
+    public void printAllPolls() {
+        this.db.getPollList().stream()
+                .forEach(e->{
+                    System.out.println("["+e.getId()+"] "+e.getTitle());
+                });
+    }
 
 
 }

@@ -44,6 +44,14 @@ public class Poll extends Idea {
         return null;
     }
 
+    public String getPublicOptions()
+    {
+        StringBuilder ret = new StringBuilder();
+        this.getOptions().stream().forEach(o->{
+           if(!o.isOtherAnswer()) ret.append("["+o.getIdOption()+"]"+o.getName()+"\n");
+        });
+        return ret.toString();
+    }
     public String getTopic() {
         return topic;
     }

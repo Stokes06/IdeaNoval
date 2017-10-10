@@ -20,4 +20,16 @@ public class MarkServicesImpl implements MarkServices {
        Mark mark = new Mark(idEvaluableIdea, idUser, grade);
        db.addMark(mark);
     }
+
+    @Override
+    public String getMarksForIdea(int idEvaluableIdea) {
+        StringBuilder str = new StringBuilder();
+       long numberTop =  this.db.getMarkList().stream().filter(e->e.getIdIdea()==idEvaluableIdea)
+                .filter(e->e.getGrade()==Grade.TOP).count();
+        long numberFlop =  this.db.getMarkList().stream().filter(e->e.getIdIdea()==idEvaluableIdea)
+                .filter(e->e.getGrade()==Grade.FLOP).count();
+        str.append(numberTop+"↑ - ");
+        str.append(numberFlop+"↓");
+        return str.toString();
+    }
 }

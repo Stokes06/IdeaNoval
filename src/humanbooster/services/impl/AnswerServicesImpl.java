@@ -22,7 +22,11 @@ public class AnswerServicesImpl implements AnswerServices {
             Poll poll = db.getPollList().stream()
                     .filter(e -> e.getId() == idPoll)
                     .findFirst().get();
-            if(poll.getIdAuthor()==idUser) return;
+            if(poll.getIdAuthor()==idUser)
+            {
+                System.out.println("Un utilisateur ne peut pas voter pour son idée");
+                return;
+            }
             // On ajoute l'option dans le poll si elle n'existe pas déja
             poll.addOtherOption(_answer);
             PollOption optionChoisie = null;

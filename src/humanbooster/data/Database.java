@@ -25,7 +25,7 @@ public class Database {
         userList.add(new Client("Marie-Estelle","met@hotmail.fr","mouelline"));
         userList.add(new Client("Jack","jack@hb.com","lepzaozafk"));
         evaluableIdeasList.add(new EvaluableIdea("idée du siècle","cliquez sur le lien pour la voir",userList.get(0).getIdUser()));
-        evaluableIdeasList.add(new EvaluableIdea("idée du jour"," ",userList.get(1).getIdUser()));
+        evaluableIdeasList.add(new EvaluableIdea("idée du jour","J'aimerais avoir une bnnne idée pour pouvoir poster sur ce site ",userList.get(3).getIdUser()));
 
         generatePoll();
     }
@@ -68,7 +68,7 @@ public class Database {
 
         }catch (NoSuchElementException e)
         {
-            System.err.println("Le poll avec l'id "+idPoll+" n'existe pas");
+            System.out.println("Le poll avec l'id "+idPoll+" n'existe pas");
         }finally {
             return ret;
         }
@@ -100,6 +100,12 @@ public class Database {
             System.out.println("cette option n'existe pas");
             return null;
         }
+    }
+    public List<PollOption> getOptionsByIdPoll(int idPoll)
+    {
+        return this.getPollList().stream().filter(poll->poll.getId()==idPoll)
+                .findFirst().get()
+                .getOptions();
     }
     public PollOption getOptionById(int idOption)
     {
@@ -180,5 +186,15 @@ public class Database {
         this.getAnswerList().add(answer);
     }
 
+
+    public EvaluableIdea getEvaluateIdeaById(int choix) {
+        try{
+            return this.getEvaluableIdeas().stream().filter(e->e.getId()==choix).findFirst().get();
+        }catch(NoSuchElementException e)
+        {
+            System.out.println("le choix de cette idée n'est pas disponible");
+            return null;
+        }
+    }
 
 }
