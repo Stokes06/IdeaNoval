@@ -7,6 +7,7 @@ import java.util.Date;
 
 public class Idea {
 
+    private static int ideaCount = 0;
     private int idIdea;
     private String title;
     private String content;
@@ -16,6 +17,7 @@ public class Idea {
     private Category category;
     private boolean isDeleted;
     public Idea(String title, String content, int idAuthor) {
+        this.idIdea = ideaCount++;
         this.title = title;
         this.content = content;
         this.idAuthor = idAuthor;
@@ -27,7 +29,7 @@ public class Idea {
         return idIdea;
     }
 
-    public void setIdIdea(int idIdea) {
+    public void setId(int idIdea) {
         this.idIdea = idIdea;
     }
 

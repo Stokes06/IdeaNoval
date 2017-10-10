@@ -17,6 +17,7 @@ import java.util.stream.IntStream;
 
 public class ConnectionTest {
     public static void main(String[] args) {
+     /*
         Database db = new Database();
         UserServices userServices = new UserServicesImpl(db);
         IdeaServices ideaServices = new IdeaServicesImpl(db);
@@ -56,6 +57,6 @@ public class ConnectionTest {
         answerServices.addAnswer(pollTemp,session,"peut-etre");
         answerServices.addAnswer(pollTemp,session,"oui");
         System.out.println(pollTemp.getOptions());
-
+*/
     }
 }

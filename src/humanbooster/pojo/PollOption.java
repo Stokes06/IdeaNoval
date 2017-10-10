@@ -1,11 +1,23 @@
 package humanbooster.pojo;
 
 public class PollOption {
+    private static int optionCount = 0;
     private int idOption;
     private String name;
-
+    private boolean isOtherAnswer;
     public PollOption(String name) {
+
         this.name = name;
+        this.idOption = optionCount++;
+        this.isOtherAnswer = false;
+    }
+
+    public boolean isOtherAnswer() {
+        return isOtherAnswer;
+    }
+
+    public void setOtherAnswer(boolean otherAnswer) {
+        isOtherAnswer = otherAnswer;
     }
 
     public int getIdOption() {

@@ -18,49 +18,44 @@ public class AnswerServicesImpl implements AnswerServices {
          * On cherche si la réponse est disponible parmis les PollOption
          */
         int idOption;
-   try{
-        idOption = db.getAnswerList().stream()
-                .map(answer -> answer.getIdPoll())
-               .filter(id-> id==idPoll)
-               .findFirst().get();
-   }catch (NoSuchElementException e)
-   {
-       // Si on ne la trouve pas, on crée l'option et on l'ajoute a la liste du Poll
-       idOption = new PollOption(_answer);
-       poll.getOptions().add(option);
-   }
+        try {
+            Poll poll = db.getPollList().stream()
+                    .filter(e -> e.getId() == idPoll)
+                    .findFirst().get();
+            if(poll.getIdAuthor()==idUser) return;
+            // On ajoute l'option dans le poll si elle n'existe pas déja
+            poll.addOtherOption(_answer);
+            PollOption optionChoisie = null;
+            // On la cherche dans la liste de la BD
+            if((optionChoisie = db.getOptionByName(_answer))==null)
+            {
+                //Si elle n'y est pas , on l'ajoute en la cherchant dans le poll
+                optionChoisie = poll.getOptions().stream().filter(e->e.getName().equals(_answer)).findFirst().get();
+                db.getPollOptionList().add(optionChoisie);
+            }
 
-
-
-     // On crée la réponse à envoyer
-        Answer answer = new Answer(poll, user, option);
-   db.addAnswer(answer);
-
-
-
+            db.getAnswerList().add(new Answer(idPoll, idUser,optionChoisie.getIdOption()));
+        } catch (NoSuchElementException e) {
+            System.err.println("Ce sondage n'existe pas");
+        }
     }
 
+
+
     @Override
-    public void printAnswersByClient(Poll poll) {
+    public void printAnswersByUser(int idUser) {
         StringBuilder affichage = new StringBuilder();
-        poll.getAnswers().stream()
-                .forEach(e->{
-                    affichage.append("reponse de "+e.getUser().getPseudo()+" : "+e.getAnswer().getName()+"\n");
+        affichage.append("Réponses de "+db.getUserById(idUser).getPseudo()+" :\n");
+        db.getAnswerList().stream().filter(a-> a.getIdUser()==idUser)
+                .forEach(answer -> {
+                    affichage.append(db.getPollById(answer.getIdPoll()).getTopic()+"   ");
+                    affichage.append(db.getOptionById(answer.getIdOption()).getName()+"\n");
                 });
         System.out.println(affichage.toString());
     }
 
     @Override
-    public void printAnswersScore(Poll poll) {
-        StringBuilder affichage = new StringBuilder();
+    public void printAnswersScore(int idPoll) {
 
-        for(PollOption pollOption : poll.getOptions())
-        {
-            long numberOfVote = poll.getAnswers().stream()
-                    .filter(e->e.getAnswer().getName().equals(pollOption.getName()))
-                    .count();
-            affichage.append(pollOption.getName()+" : "+numberOfVote+"\n");
-        }
-        System.out.println(affichage);
     }
 }
