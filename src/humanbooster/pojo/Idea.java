@@ -11,19 +11,19 @@ public class Idea {
     private String title;
     private String content;
     private Date publishDate;
-    private Client author;
+    private int idAuthor;
     private String picture;
     private Category category;
     private boolean isDeleted;
-    public Idea(String title, String content, Client author) {
+    public Idea(String title, String content, int idAuthor) {
         this.title = title;
         this.content = content;
-        this.author = author;
+        this.idAuthor = idAuthor;
         this.publishDate = new Date();
         isDeleted = false;
     }
 
-    public int getIdIdea() {
+    public int getId() {
         return idIdea;
     }
 
@@ -63,12 +63,12 @@ public class Idea {
         this.publishDate = publishDate;
     }
 
-    public Client getAuthor() {
-        return author;
+    public int getIdAuthor() {
+        return idAuthor;
     }
 
-    public void setAuthor(Client author) {
-        this.author = author;
+    public void setIdAuthor(int author) {
+        this.idAuthor = author;
     }
 
     public String getPicture() {
@@ -93,7 +93,7 @@ public class Idea {
                 "title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", publishDate=" + DateManager.formatDate(publishDate) +
-                ", author=" + author +
+                ", author=" + idAuthor +
                 ", category=" + category +
                 '}';
     }

@@ -9,8 +9,8 @@ public class EvaluableIdea extends Idea {
     private Date endEvaluation;
 
 
-    public EvaluableIdea(String title, String content, Client author) {
-        super(title, content, author);
+    public EvaluableIdea(String title, String content, int idAuthor) {
+        super(title, content, idAuthor);
         Calendar c = Calendar.getInstance();
         c.setTime(this.getPublishDate());
         c.add(Calendar.DAY_OF_WEEK,7);

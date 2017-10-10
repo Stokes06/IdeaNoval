@@ -46,7 +46,7 @@ public class ConnectionTest {
         System.out.println(idea.getContent());
         System.out.println("tapez 1 si vous aimez , 0 si vous n'aimez pas");
         Grade value = sc.nextInt()>0 ? Grade.TOP : Grade.FLOP;
-        markServices.addMark(new Mark(idea, session, value));
+        markServices.addMark(idea, session, value);
         ideaServices.printAllEvaluableIdeas();
 
         Poll pollTemp = new Poll("titre","contenu",(Client)session);

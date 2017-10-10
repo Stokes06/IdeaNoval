@@ -2,47 +2,39 @@ package humanbooster.pojo;
 
 public class Answer {
 
-    private int idAnswer;
-    private Poll poll;
-    private User user;
-    private PollOption answer;
+    private int idPoll;
+    private int idUser;
+    private int idOption;
 
-    public Answer(Poll poll, User user, PollOption _answer) {
-        this.poll = poll;
-        this.user = user;
-        this.answer = _answer;
+    public Answer(int idPoll, int idUser, int idOption) {
+        this.idPoll = idPoll;
+        this.idUser = idUser;
+        this.idOption = idOption;
 
     }
 
-    public int getIdAnswer() {
-        return idAnswer;
+
+    public int getIdPoll() {
+        return idPoll;
     }
 
-    public void setIdAnswer(int idAnswer) {
-        this.idAnswer = idAnswer;
+    public void setIdPoll(int poll) {
+        this.idPoll = poll;
     }
 
-    public Poll getPoll() {
-        return poll;
+    public int getIdUser() {
+        return idUser;
     }
 
-    public void setPoll(Poll poll) {
-        this.poll = poll;
+    public void setIdUser(int user) {
+        this.idUser = user;
     }
 
-    public User getUser() {
-        return user;
+    public int getIdOption() {
+        return idOption;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public PollOption getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(PollOption answer) {
-        this.answer = answer;
+    public void setIdOption(int idOption) {
+        this.idOption = idOption;
     }
 }

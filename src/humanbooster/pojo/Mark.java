@@ -2,7 +2,7 @@ package humanbooster.pojo;
 
 public class Mark {
 
-    private int idMark;
+
     private int idIdea;
     private int idUser;
     /**
@@ -16,12 +16,20 @@ public class Mark {
         this.grade = grade;
     }
 
-    public int getIdMark() {
-        return idMark;
+    public int getIdIdea() {
+        return idIdea;
     }
 
-    public void setIdMark(int idMark) {
-        this.idMark = idMark;
+    public void setIdIdea(int idIdea) {
+        this.idIdea = idIdea;
+    }
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 
     public int getIdea() {

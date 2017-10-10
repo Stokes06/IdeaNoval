@@ -10,14 +10,18 @@ public class Poll extends Idea {
      * Comporte deux à cinq options plus les eventuelles options personnalisées
      */
     private List<PollOption> options;
-    private List<Answer> answers;
+
     private Date endPoll;
-    public Poll(String title, String content, Client author) {
-        super(title, content, author);
+    public Poll(String title, String content, int idAuthor) {
+        super(title, content, idAuthor);
         options = new ArrayList<>();
-        answers = new ArrayList<>();
+
     }
 
+    /**
+     * Test si l'option existe déjà et la crée dans le cas contraire
+     * @param optionName
+     */
     public void addOption(String optionName)
     {
         if(options.stream().filter(p->p.getName().equals(optionName)).count() == 0)
@@ -31,14 +35,6 @@ public class Poll extends Idea {
 
     public void setOptions(List<PollOption> options) {
         this.options = options;
-    }
-
-    public List<Answer> getAnswers() {
-        return answers;
-    }
-
-    public void setAnswers(List<Answer> answers) {
-        this.answers = answers;
     }
 
     public Date getEndPoll() {

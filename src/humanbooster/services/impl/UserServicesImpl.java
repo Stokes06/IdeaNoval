@@ -10,6 +10,6 @@ public class UserServicesImpl implements UserServices{
     @Override
     public User connectUser(String login, String password) {
 
-        return this.db.getUsers().stream().filter(e->e.getLogin().equals(login) && e.getPassword().equals(password)).findFirst().get();
+        return this.db.getUserList().stream().filter(e->e.getLogin().equals(login) && e.getPassword().equals(password)).findFirst().get();
     }
 }

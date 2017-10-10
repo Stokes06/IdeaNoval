@@ -13,33 +13,31 @@ public class AnswerServicesImpl implements AnswerServices {
   private Database db;
     public AnswerServicesImpl(Database _db){this.db = _db;}
     @Override
-    public void addAnswer(Poll poll, User user, String _answer ) {
+    public void addAnswer(int idPoll, int idUser, String _answer ) {
         /**
          * On cherche si la réponse est disponible parmis les PollOption
          */
-        PollOption option = null;
+        int idOption;
    try{
-        option = poll.getOptions().stream()
-               .filter(pollOption->pollOption.getName().equals(_answer))
+        idOption = db.getAnswerList().stream()
+                .map(answer -> answer.getIdPoll())
+               .filter(id-> id==idPoll)
                .findFirst().get();
    }catch (NoSuchElementException e)
    {
-       //Rien a faire ici, c'est juste qu'on ne l'a pas trouvé
+       // Si on ne la trouve pas, on crée l'option et on l'ajoute a la liste du Poll
+       idOption = new PollOption(_answer);
+       poll.getOptions().add(option);
    }
-        // Si on ne la trouve pas, on crée l'option et on l'ajoute a la liste du Poll
-        if(option == null)
-        {
-            option = new PollOption(_answer);
-            poll.getOptions().add(option);
-        }
+
+
 
      // On crée la réponse à envoyer
         Answer answer = new Answer(poll, user, option);
-        // on ajoute la réponse au poll
-       poll.getAnswers().add(answer);
+   db.addAnswer(answer);
 
-        //on ajoute la réponse à l'utilisateur
-        user.getAnswers().add(answer);
+
+
     }
 
     @Override

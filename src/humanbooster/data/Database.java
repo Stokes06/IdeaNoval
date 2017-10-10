@@ -7,49 +7,89 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Database {
-    private List<User> users;
-    private List<EvaluableIdea> evaluableIdeas;
-    private List<Poll> polls;
-
+    private List<User> userList;
+    private List<EvaluableIdea> evaluableIdeasList;
+    private List<Poll> pollList;
+    private List<Mark> markList;
+    private List<Answer> answerList;
     public Database(){
-
-        evaluableIdeas = new ArrayList<>();
-        users = Arrays.asList(new Administrator("AdminChef","admin@ideaNoval.com","dazdko"),new Client("Guillaume","gm","0167"),new Client("Marie-Estelle","met@hotmail.fr","mouelline"));
-        evaluableIdeas.add(new EvaluableIdea("idée du siècle","cliquez sur le lien pour la voir",new Client("arnaqueur","dadzdz","25515")));
-        evaluableIdeas.add(new EvaluableIdea("idée du jour","me raser la barbe avant qu'il ne soit trop tard",new Client("le nul","dadead","ezfreg")));
+        userList = new ArrayList<>();
+        evaluableIdeasList = new ArrayList<>();
+        pollList = new ArrayList<>();
+        markList = new ArrayList<>();
+        answerList = new ArrayList<>();
+        userList.add(new Administrator("AdminChef","admin@ideaNoval.com","dazdko"));
+        userList.add(new Client("Guillaume","gm","0"));
+        userList.add(new Client("Marie-Estelle","met@hotmail.fr","mouelline"));
+        userList.add(new Client("Jack","jack@hb.com","lepzaozafk"));
+        evaluableIdeasList.add(new EvaluableIdea("idée du siècle","cliquez sur le lien pour la voir",userList.get(0).getIdUser()));
+        evaluableIdeasList.add(new EvaluableIdea("idée du jour"," ",userList.get(1).getIdUser()));
 
         generatePoll();
     }
 
     private void generatePoll()
     {
-        polls = new ArrayList<>();
-        Poll poll = new Poll("Sondage de la semaine","que pensez vous de ... ?",new Client("inconnu","login","mdp"));
+        pollList = new ArrayList<>();
+        Poll poll = new Poll("Sondage de la semaine","que pensez vous de ... ?",userList.get(3).getIdUser());
         poll.addOption("oui");
         poll.addOption("non");
-        polls.add(poll);
-    }
-    public List<Poll> getPolls() {
-        return polls;
+        pollList.add(poll);
     }
 
-    public void setPolls(List<Poll> polls) {
-        this.polls = polls;
+    public List<EvaluableIdea> getEvaluableIdeasList() {
+        return evaluableIdeasList;
     }
 
-    public List<User> getUsers() {
-        return users;
+    public void setEvaluableIdeasList(List<EvaluableIdea> evaluableIdeasList) {
+        this.evaluableIdeasList = evaluableIdeasList;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public List<Mark> getMarkList() {
+        return markList;
+    }
+
+    public void setMarkList(List<Mark> markList) {
+        this.markList = markList;
+    }
+
+    public List<Answer> getAnswerList() {
+        return answerList;
+    }
+
+    public void setAnswerList(List<Answer> answerList) {
+        this.answerList = answerList;
+    }
+
+    public List<Poll> getPollList() {
+        return pollList;
+    }
+
+    public void setPollList(List<Poll> pollList) {
+        this.pollList = pollList;
+    }
+
+    public List<User> getUserList() {
+        return userList;
+    }
+
+    public void setUserList(List<User> userList) {
+        this.userList = userList;
     }
 
     public List<EvaluableIdea> getEvaluableIdeas() {
-        return evaluableIdeas;
+        return evaluableIdeasList;
     }
 
     public void setEvaluableIdeas(List<EvaluableIdea> evaluableIdeas) {
-        this.evaluableIdeas = evaluableIdeas;
+        this.evaluableIdeasList = evaluableIdeas;
+    }
+
+    public void addMark(Mark mark) {
+        this.getMarkList().add(mark);
+    }
+
+    public void addAnswer(Answer answer) {
+        this.getAnswerList().add(answer);
     }
 }

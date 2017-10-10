@@ -8,6 +8,7 @@ import java.util.List;
 
 public class User {
 
+    private static int userCount = 0;
     private int idUser;
     /**
      * le login sera son adresse email
@@ -18,7 +19,7 @@ public class User {
     private Date registerDate;
 
 
-    private List<Answer> answers;
+ //   private List<Answer> answers;
 
     public User(){}
     public User(String _pseudo, String _login, String _password)
@@ -27,9 +28,8 @@ public class User {
         this.login = _login;
         this.password = _password;
         this.registerDate = new Date();
+        this.idUser = userCount++;
 
-
-        answers = new ArrayList<>();
     }
 
     public int getIdUser() {
@@ -73,13 +73,6 @@ public class User {
     }
 
 
-    public List<Answer> getAnswers() {
-        return answers;
-    }
-
-    public void setAnswers(List<Answer> answers) {
-        this.answers = answers;
-    }
 
     @Override
     public String toString() {
