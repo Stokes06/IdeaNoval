@@ -8,6 +8,7 @@ import java.util.List;
 
 public class User {
 
+    private int idUser;
     /**
      * le login sera son adresse email
      */
@@ -29,6 +30,14 @@ public class User {
         commentaries = new ArrayList<>();
         marks = new ArrayList<>();
         answers = new ArrayList<>();
+    }
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 
     public String getLogin() {

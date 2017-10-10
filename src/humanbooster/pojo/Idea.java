@@ -7,6 +7,7 @@ import java.util.Date;
 
 public class Idea {
 
+    private int idIdea;
     private String title;
     private String content;
     private Date publishDate;
@@ -20,6 +21,22 @@ public class Idea {
         this.author = author;
         this.publishDate = new Date();
         isDeleted = false;
+    }
+
+    public int getIdIdea() {
+        return idIdea;
+    }
+
+    public void setIdIdea(int idIdea) {
+        this.idIdea = idIdea;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 
     public String getTitle() {

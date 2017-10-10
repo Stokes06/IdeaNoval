@@ -6,6 +6,7 @@ import java.util.Date;
 
 public class Commentary {
 
+    private int idCommentary;
     private Idea idea;
     private User author;
     private Date commentaryDate;
@@ -18,6 +19,14 @@ public class Commentary {
         this.content = content;
         commentaryDate = new Date();
         isDeleted = false;
+    }
+
+    public int getIdCommentary() {
+        return idCommentary;
+    }
+
+    public void setIdCommentary(int idCommentary) {
+        this.idCommentary = idCommentary;
     }
 
     public String getContent() {

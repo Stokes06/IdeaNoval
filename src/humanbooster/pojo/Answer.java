@@ -2,6 +2,7 @@ package humanbooster.pojo;
 
 public class Answer {
 
+    private int idAnswer;
     private Poll poll;
     private User user;
     private PollOption answer;
@@ -11,6 +12,14 @@ public class Answer {
         this.user = user;
         this.answer = _answer;
 
+    }
+
+    public int getIdAnswer() {
+        return idAnswer;
+    }
+
+    public void setIdAnswer(int idAnswer) {
+        this.idAnswer = idAnswer;
     }
 
     public Poll getPoll() {
