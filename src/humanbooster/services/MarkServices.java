@@ -5,6 +5,6 @@ import humanbooster.pojo.Mark;
 
 public interface MarkServices {
 
-    public abstract void addMark(int idEvaluableIdea, int idUser, Grade grade);
+    public abstract void addMark(int idEvaluableIdea, int idUser, String advice);
     public abstract String getMarksForIdea(int idEvaluableIdea);
 }

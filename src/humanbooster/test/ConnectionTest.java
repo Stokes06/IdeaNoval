@@ -60,11 +60,11 @@ public class ConnectionTest {
         EvaluableIdea ideaVote = db.getEvaluateIdeaById(choix);
         System.out.println(ideaVote.getContent());
         System.out.println("Aimez vous cette idée ? (y/n)");
-        Grade g = (sc.next().matches("y|oui]"))? Grade.TOP : Grade.FLOP;
+        String answer = sc.next();
 
-        markServices.addMark(ideaVote.getId(), session.getIdUser(), g);
-        markServices.addMark(ideaVote.getId(), db.getUserList().get(0).getIdUser(), Grade.TOP);
-        markServices.addMark(ideaVote.getId(), db.getUserList().get(2).getIdUser(), Grade.FLOP);
+        markServices.addMark(ideaVote.getId(), session.getIdUser(),answer);
+        markServices.addMark(ideaVote.getId(), db.getUserList().get(0).getIdUser(), "TOP");
+        markServices.addMark(ideaVote.getId(), db.getUserList().get(2).getIdUser(), "flop");
 
         System.out.println(ideaVote.getTitle()+" Evaluation :");
         System.out.println(markServices.getMarksForIdea(ideaVote.getId()));

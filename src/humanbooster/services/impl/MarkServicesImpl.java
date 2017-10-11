@@ -11,7 +11,9 @@ public class MarkServicesImpl implements MarkServices {
     Database db;
     public MarkServicesImpl(Database _db) {this.db = _db;}
     @Override
-    public void addMark(int idEvaluableIdea, int idUser, Grade grade) {
+    public void addMark(int idEvaluableIdea, int idUser, String advice) {
+        Grade grade = (advice.matches("TOP|top|oui|yes|o|O|OUI"))? Grade.TOP : Grade.FLOP;
+
         // On cherche l'idée correspondante à l'id passé en paramètre
        EvaluableIdea ideaToMark = db.getEvaluableIdeas().stream().filter(idea -> idea.getId() == idEvaluableIdea).findFirst().get();
         // Si l'utilisateur est le créateur de l'idée , il ne vote pas

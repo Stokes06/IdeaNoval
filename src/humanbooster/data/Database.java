@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-public class Database {
+public class Database implements DatabaseService{
     private List<User> userList;
     private List<EvaluableIdea> evaluableIdeasList;
     private List<Poll> pollList;
@@ -21,7 +21,7 @@ public class Database {
         answerList = new ArrayList<>();
         pollOptionList = new ArrayList<>();
         userList.add(new Administrator("AdminChef","admin@ideaNoval.com","dazdko"));
-        userList.add(new Client("Guillaume","gm","0"));
+        userList.add(new Client("Guillaume","dev","0"));
         userList.add(new Client("Marie-Estelle","met@hotmail.fr","mouelline"));
         userList.add(new Client("Jack","jack@hb.com","lepzaozafk"));
         evaluableIdeasList.add(new EvaluableIdea("idée du siècle","cliquez sur le lien pour la voir",userList.get(0).getIdUser()));
@@ -33,7 +33,7 @@ public class Database {
     private void generatePoll()
     {
         pollList = new ArrayList<>();
-        Poll p1 = new Poll("Sondage de la semaine","la nourriture... ?",userList.get(1).getIdUser());
+        Poll p1 = new Poll("Sondage de la semaine","la nourriture... ?",userList.get(2).getIdUser());
         p1.setTopic("boulangerie ou super U ?");
         p1.addOption("boulangerie");
         p1.addOption("U");
