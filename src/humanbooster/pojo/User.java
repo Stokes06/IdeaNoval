@@ -19,8 +19,6 @@ public class User {
     private Date registerDate;
 
 
- //   private List<Answer> answers;
-
     public User(){}
     public User(String _pseudo, String _login, String _password)
     {
