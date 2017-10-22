@@ -2,32 +2,32 @@ package humanbooster.pojo;
 
 public class CommentaryAlert {
 
-    private Commentary commentary;
-    private Client author;
+    private int idCommentary;
+    private int idAuthor;
     private String reason;
     private String dateAlert;
 
-    public CommentaryAlert(Commentary commentary, Client author, String reason, String dateAlert) {
-        this.commentary = commentary;
-        this.author = author;
+    public CommentaryAlert(int idCommentary, int idAuthor, String reason, String dateAlert) {
+        this.idCommentary = idCommentary;
+        this.idAuthor = idAuthor;
         this.reason = reason;
         this.dateAlert = dateAlert;
     }
 
-    public Commentary getCommentary() {
-        return commentary;
+    public int getIdCommentary() {
+        return idCommentary;
     }
 
-    public void setCommentary(Commentary commentary) {
-        this.commentary = commentary;
+    public void setIdCommentary(int idCommentary) {
+        this.idCommentary = idCommentary;
     }
 
-    public Client getAuthor() {
-        return author;
+    public int getAuthor() {
+        return idAuthor;
     }
 
-    public void setAuthor(Client author) {
-        this.author = author;
+    public void setAuthor(int author) {
+        this.idAuthor = author;
     }
 
     public String getReason() {
@@ -44,5 +44,15 @@ public class CommentaryAlert {
 
     public void setDateAlert(String dateAlert) {
         this.dateAlert = dateAlert;
+    }
+
+    @Override
+    public String toString() {
+        return "CommentaryAlert{" +
+                "idCommentary=" + idCommentary +
+                ", idAuthor=" + idAuthor +
+                ", reason='" + reason + '\'' +
+                ", dateAlert='" + dateAlert + '\'' +
+                '}';
     }
 }
