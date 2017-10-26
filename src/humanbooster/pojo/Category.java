@@ -2,11 +2,13 @@ package humanbooster.pojo;
 
 public enum Category {
 
-    SPORT("Sport"),NATURE("Nature"),MATHEMATIQUES("Maths"),AUTOMOBILE("Automobile"),MUSIQUE("Musique");
+    SPORT(1,"Sport"),NATURE(2,"Nature"),MATHEMATIQUES(3,"Maths"),AUTOMOBILE(4,"Automobile"),MUSIQUE(5,"Musique");
+    private int idCategory;
     private String name;
-    Category(String _name)
+    Category(int id, String _name)
     {
         name = _name;
+        idCategory = id;
     }
 
     @Override

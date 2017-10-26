@@ -14,7 +14,7 @@ public class Idea {
     private Date publishDate;
     private int idAuthor;
     private String picture;
-    private Category category;
+    private int idCategory;
     private boolean isDeleted;
     public Idea(String title, String content, int idAuthor) {
         this.idIdea = ideaCount++;
@@ -81,12 +81,12 @@ public class Idea {
         this.picture = picture;
     }
 
-    public Category getCategory() {
-        return category;
+    public int getCategory() {
+        return idCategory;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategory(int category) {
+        this.idCategory = category;
     }
 
     @Override
@@ -96,7 +96,7 @@ public class Idea {
                 ", content='" + content + '\'' +
                 ", publishDate=" + DateManager.formatDate(publishDate) +
                 ", author=" + idAuthor +
-                ", category=" + category +
+                ", category=" + idCategory +
                 '}';
     }
 }
